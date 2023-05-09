@@ -1,4 +1,3 @@
-import React from "react";
 import { useGetUsersQuery } from "./api/api";
 import Card from "./components/Card";
 

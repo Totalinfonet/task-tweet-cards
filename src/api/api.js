@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-// import axios from "axios";
 
 export const api = createApi({
   reducerPath: "api",
@@ -10,7 +9,18 @@ export const api = createApi({
     getUsers: builder.query({
       query: () => "tweets",
     }),
+    getUserById: builder.query({
+      query: (id) => `tweets/${id}`,
+    }),
+    followUser: builder.mutation({
+      query: ({ id, isFollow }) => ({
+        url: `tweets/${id}`,
+        method: "PUT",
+        body: { isFollow },
+      }),
+    }),
   }),
 });
 
-export const { useGetUsersQuery } = api;
+export const { useGetUsersQuery, useGetUserByIdQuery, useFollowUserMutation } =
+  api;
